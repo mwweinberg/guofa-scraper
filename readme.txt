@@ -6,4 +6,4 @@ goufa-scraper-phase-one.py - identical to alt_simple_fiveelements but with the r
 
 guofa-scraper-phase-two.py - Takes the URL and outputs a CSV with all five elements on the primary page and then goes to the child pages and adds the category.
 
-fullbody.py - takes the body text of the doc and puts it into a CSV
+fullbody.py - takes the body text of the doc and puts it into a CSV and outputs it into an HTML document
