@@ -168,7 +168,7 @@ def bodyscraper(row):
     url = g[1]
     #the name of the doc is in spot [2] of the row
     docname = g[2]
-    #this removes "发文字号：" from the start of every file name
+    #this removes the header from the start of every file name
     #it turns out that those are represented by the first 15 
     #characters in the string. I have no idea why and got to 15
     #by trial and error
