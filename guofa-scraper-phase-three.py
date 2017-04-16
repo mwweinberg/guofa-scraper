@@ -7,8 +7,19 @@ import csv
 
 holder = []
 
+#***********************************#
+#***********************************#
+#***CHANGE THE TARGET URL***********#
+#***********************************#
+#***AND NAME OF OUTPUT CSV FILE*****#
+#***********************************#
+#***********************************#
+
+
 #this is the target URL
 target_url = "http://sousuo.gov.cn/s.htm?q=&n=80&p=&t=paper&advance=true&title=&content=&puborg=&pcodeJiguan=%E5%9B%BD%E5%8F%91&pcodeYear=2016&pcodeNum=&childtype=&subchildtype=&filetype=&timetype=timeqb&mintime=&maxtime=&sort=pubtime&nocorrect=&sortType=1"
+
+csv_name = "guofa-scraper-phase-three-output.csv"
 
 def scraper(url):
 
@@ -155,8 +166,9 @@ def bodyscraper(row):
     g = holder[row]
     #the url is in spot [1] of the row
     url = g[1]
-    #the name of the doc is in spot [3] of the row
-    docname = g[3]
+    #the name of the doc is in spot [2] of the row
+    docname = g[2]
+
 
     data = []
 
@@ -192,15 +204,17 @@ while scraper2_row_counter < len(holder):
     scraper2(scraper2_row_counter)
     scraper2_row_counter += 1
 
+#outputs holder to a csv
+#this is before the bodyscraper because the CSV should not have the HTML field
+#if you want the csv to have the HTML field at some point just move it
+#to the end
+
+with open(csv_name, 'wb') as f:
+	writer = csv.writer(f)
+	writer.writerows(holder)
+
 #run bodyscraper for each row in holder
 bodyscraper_row_counter = 0
 while bodyscraper_row_counter < len(holder):
     bodyscraper(bodyscraper_row_counter)
     bodyscraper_row_counter += 1
-
-
-#outputs holder to a csv
-
-with open('guofa-scraper-phase-two-output.csv', 'wb') as f:
-	writer = csv.writer(f)
-	writer.writerows(holder)
